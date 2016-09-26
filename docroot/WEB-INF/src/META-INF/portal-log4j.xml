@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!--
+	
+	<logger name="es.uib.owu.liferay.portlet">
+		<level value="DEBUG" />
+	</logger>
+	
+	 
+	<logger name="cat.uib.cti.cas.client.session">
+		<level value="DEBUG" />
+	</logger>	
+	 
+	<logger name="org.jasig.cas">
+		<level value="DEBUG" />
+	</logger>
+	-->
+</log4j:configuration>
