@@ -67,8 +67,7 @@ public class CasProxyBridgePortlet extends MVCPortlet {
 				_log.debug("renderRequest.getPortletSession().getId(): "+renderRequest.getPortletSession().getId());
 		}
 
-		// String targetService =
-		// "https://sso1-dev.sint.uib.es:9443/TestApp1/sso/ProtectedServlet";
+		// String targetService = "https://ThirdApp/sso/ProtectedServlet";
 		// String selectorJsoup = "#summary > div.bloc:eq(2)";
 
 		if (targetService != null) {
@@ -87,18 +86,7 @@ public class CasProxyBridgePortlet extends MVCPortlet {
 						keyServiceUser, renderRequest,
 						casServiceUtilLocalService, targetService);
 
-				if (con != null) {
-
-					/*
-					 * if (_log.isDebugEnabled()){ BufferedReader in = new
-					 * BufferedReader(new
-					 * InputStreamReader(con.getInputStream())); String
-					 * inputLine; StringBuffer response = new StringBuffer();
-					 * while ((inputLine = in.readLine()) != null)
-					 * response.append(inputLine); in.close(); String xHtml =
-					 * response.toString(); _log.debug("\nResponse: " + xHtml);
-					 * }
-					 */
+				if (con != null) {					
 					modelHTML = htmlProcessing(targetService,
 							htmlJsoupSelector, con);
 					MultiVMPoolUtil
@@ -152,8 +140,7 @@ public class CasProxyBridgePortlet extends MVCPortlet {
 		}
 
 		doc.outputSettings().escapeMode(EscapeMode.xhtml);
-		String str = doc.outerHtml();
-		// _log.debug("HTML: "+str);
+		String str = doc.outerHtml();	
 
 		Elements blocElements = doc.select(htmlJsoupSelector == null ? "body"
 				: htmlJsoupSelector);
@@ -165,36 +152,6 @@ public class CasProxyBridgePortlet extends MVCPortlet {
 		return str;
 	}
 
-	/*
-	 * @Override public void doEdit(RenderRequest renderRequest, RenderResponse
-	 * renderResponse) throws IOException, PortletException {
-	 * 
-	 * _log.debug("doEdit\n======================================================"
-	 * );
-	 * 
-	 * String targetServiceProxied = ParamUtil.getString(renderRequest,
-	 * "targetServiceProxied"); _log.debug("targetServiceProxied====" +
-	 * targetServiceProxied);
-	 * 
-	 * String htmlJsoupSelector = ParamUtil.getString(renderRequest,
-	 * "htmlJsoupSelector"); _log.debug("htmlJsoupSelector====" +
-	 * htmlJsoupSelector);
-	 * 
-	 * PortletPreferences preferences = renderRequest.getPreferences(); String
-	 * portletResource = ParamUtil.getString(renderRequest, "portletResource");
-	 * if (Validator.isNotNull(portletResource) && (preferences == null)) { try
-	 * { preferences = PortletPreferencesFactoryUtil.getPortletSetup(
-	 * renderRequest, portletResource); } catch (PortalException e) { // TODO
-	 * Auto-generated catch block e.printStackTrace(); } catch (SystemException
-	 * e) { // TODO Auto-generated catch block e.printStackTrace(); } }
-	 * preferences.setValue("targetServiceProxied", targetServiceProxied);
-	 * preferences.setValue("htmlJsoupSelector", htmlJsoupSelector);
-	 * preferences.store(); SessionMessages.add(renderRequest,
-	 * "potlet-config-saved");
-	 * 
-	 * super.doEdit(renderRequest, renderResponse);
-	 * 
-	 * }
-	 */
+	
 
 }
